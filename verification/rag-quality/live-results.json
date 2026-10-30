@@ -1,0 +1,484 @@
+[
+  {
+    "company": "infosys",
+    "question": "How many medical leaves are allowed in 2026?",
+    "retrieved": [
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Eligible employees receive 12 paid medical leave days per calendar year.\n\u2022 Eligible employees receive 20 paid annual leave days per calendar year.\n\u2022 Up to 5 unused annual leave days may be carried to the next calendar year; medical leave cannot be carried\nforward."
+      },
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:4",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Planned annual leave should be requested at least 5 working days in advance and requires manager\napproval.\n\u2022 For an unexpected medical absence, notify the manager before 10:00 a.m. when reasonably possible."
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "How many medical leaves are allowed in 2026?",
+      "answer": "Eligible employees receive 12 paid medical leave days per calendar year in 2026. [1]",
+      "status": "answered",
+      "citations": [
+        {
+          "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+          "passage_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+          "filename": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Paid Leave Entitlements",
+          "page": 1,
+          "quote": "Eligible employees receive 12 paid medical leave days per calendar year.",
+          "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "chunk_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3"
+        }
+      ],
+      "supported_parts": [
+        "medical leaves"
+      ],
+      "unsupported_parts": [],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 24.24
+  },
+  {
+    "company": "infosys",
+    "question": "medical leaves",
+    "retrieved": [
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Eligible employees receive 12 paid medical leave days per calendar year.\n\u2022 Eligible employees receive 20 paid annual leave days per calendar year.\n\u2022 Up to 5 unused annual leave days may be carried to the next calendar year; medical leave cannot be carried\nforward."
+      },
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:4",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Planned annual leave should be requested at least 5 working days in advance and requires manager\napproval.\n\u2022 For an unexpected medical absence, notify the manager before 10:00 a.m. when reasonably possible."
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "medical leaves",
+      "answer": "Eligible employees receive 12 paid medical leave days per calendar year. [1]\nMedical leave cannot be carried forward. [2]\nFor an unexpected medical absence, notify the manager before 10:00 a.m. when reasonably possible. [3]",
+      "status": "answered",
+      "citations": [
+        {
+          "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+          "passage_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+          "filename": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Paid Leave Entitlements",
+          "page": 1,
+          "quote": "Eligible employees receive 12 paid medical leave days per calendar year.",
+          "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "chunk_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3"
+        },
+        {
+          "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+          "passage_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+          "filename": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Paid Leave Entitlements",
+          "page": 1,
+          "quote": "medical leave cannot be carried\nforward.",
+          "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "chunk_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3"
+        },
+        {
+          "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+          "passage_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:4",
+          "filename": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "3. Request and Notification",
+          "page": 1,
+          "quote": "For an unexpected medical absence, notify the manager before 10:00 a.m. when reasonably possible.",
+          "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "chunk_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:4"
+        }
+      ],
+      "supported_parts": [
+        "medical leaves"
+      ],
+      "unsupported_parts": [],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 3.33
+  },
+  {
+    "company": "infosys",
+    "question": "What was the medical leave allowance in 2024?",
+    "retrieved": [
+      {
+        "id": "84878739-2441-4c49-97f8-feec2071538f:3",
+        "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+        "version": "2024",
+        "text": "\u2022 Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year.\n\u2022 Under the 2024 policy, eligible employees received 16 annual leave days per calendar year.\n\u2022 Unused medical leave expired at the end of the calendar year; it was not carried forward."
+      },
+      {
+        "id": "84878739-2441-4c49-97f8-feec2071538f:4",
+        "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+        "version": "2024",
+        "text": "\u2022 Planned annual leave requests were submitted at least 3 working days before the start date.\n\u2022 Unplanned medical leave was reported to the manager as soon as reasonably possible on the first absence\nday."
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "What was the medical leave allowance in 2024?",
+      "answer": "Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year. [1]",
+      "status": "answered",
+      "citations": [
+        {
+          "document_id": "84878739-2441-4c49-97f8-feec2071538f",
+          "passage_id": "84878739-2441-4c49-97f8-feec2071538f:3",
+          "filename": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+          "version": "2024",
+          "section": "2. Medical and Annual Leave",
+          "page": 1,
+          "quote": "Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year.",
+          "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+          "chunk_id": "84878739-2441-4c49-97f8-feec2071538f:3"
+        }
+      ],
+      "supported_parts": [
+        "medical leave allowance in 2024"
+      ],
+      "unsupported_parts": [],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 2.16
+  },
+  {
+    "company": "infosys",
+    "question": "Compare the 2024 and 2026 medical leave policies.",
+    "retrieved": [
+      {
+        "id": "84878739-2441-4c49-97f8-feec2071538f:3",
+        "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+        "version": "2024",
+        "text": "\u2022 Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year.\n\u2022 Under the 2024 policy, eligible employees received 16 annual leave days per calendar year.\n\u2022 Unused medical leave expired at the end of the calendar year; it was not carried forward."
+      },
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Eligible employees receive 12 paid medical leave days per calendar year.\n\u2022 Eligible employees receive 20 paid annual leave days per calendar year.\n\u2022 Up to 5 unused annual leave days may be carried to the next calendar year; medical leave cannot be carried\nforward."
+      },
+      {
+        "id": "84878739-2441-4c49-97f8-feec2071538f:4",
+        "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+        "version": "2024",
+        "text": "\u2022 Planned annual leave requests were submitted at least 3 working days before the start date.\n\u2022 Unplanned medical leave was reported to the manager as soon as reasonably possible on the first absence\nday."
+      },
+      {
+        "id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:4",
+        "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Planned annual leave should be requested at least 5 working days in advance and requires manager\napproval.\n\u2022 For an unexpected medical absence, notify the manager before 10:00 a.m. when reasonably possible."
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "Compare the 2024 and 2026 medical leave policies.",
+      "answer": "Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year, and unused medical leave expired at the end of the calendar year without being carried forward. [1]\nUnder the 2026 policy, eligible employees receive 12 paid medical leave days per calendar year, and medical leave cannot be carried forward. [2]",
+      "status": "answered",
+      "citations": [
+        {
+          "document_id": "84878739-2441-4c49-97f8-feec2071538f",
+          "passage_id": "84878739-2441-4c49-97f8-feec2071538f:3",
+          "filename": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+          "version": "2024",
+          "section": "2. Medical and Annual Leave",
+          "page": 1,
+          "quote": "\u2022 Under the 2024 policy, eligible employees received 10 paid medical leave days per calendar year.\n\u2022 Under the 2024 policy, eligible employees received 16 annual leave days per calendar year.\n\u2022 Unused medical leave expired at the end of the calendar year; it was not carried forward.",
+          "document": "HR_01_Leave_and_Attendance_2024_SUPERSEDED.pdf",
+          "chunk_id": "84878739-2441-4c49-97f8-feec2071538f:3"
+        },
+        {
+          "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+          "passage_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3",
+          "filename": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Paid Leave Entitlements",
+          "page": 1,
+          "quote": "\u2022 Eligible employees receive 12 paid medical leave days per calendar year.\n\u2022 Eligible employees receive 20 paid annual leave days per calendar year.\n\u2022 Up to 5 unused annual leave days may be carried to the next calendar year; medical leave cannot be carried\nforward.",
+          "document": "HR_02_Leave_and_Attendance_2026_CURRENT.pdf",
+          "chunk_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea:3"
+        }
+      ],
+      "supported_parts": [
+        "2024 medical leave policy",
+        "2026 medical leave policy"
+      ],
+      "unsupported_parts": [],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 3.45
+  },
+  {
+    "company": "infosys",
+    "question": "What are the company's workplace rules?",
+    "retrieved": [
+      {
+        "id": "286ccbd5-1bcd-4e62-a7d4-cb6ecb43cbd7:3",
+        "document": "OPS_03_Whistleblower_and_Grievance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Compliance acknowledges an ethics concern within 3 working days.\n\u2022 HR Support acknowledges a workplace grievance within 2 working days."
+      },
+      {
+        "id": "286ccbd5-1bcd-4e62-a7d4-cb6ecb43cbd7:2",
+        "document": "OPS_03_Whistleblower_and_Grievance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Employees may submit ethics concerns through the confidential Compliance reporting portal or directly to\nthe demo Ethics Officer.\n\u2022 Workplace grievances unrelated to suspected misconduct may be submitted through HR Support."
+      },
+      {
+        "id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:3",
+        "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Corporate devices must automatically lock after 5 minutes of inactivity.\n\u2022 Employees must avoid discussing confidential work on open calls in public places."
+      },
+      {
+        "id": "aacac688-583c-4d84-a945-bd251b0e097c:2",
+        "document": "OPS_01_Code_of_Conduct_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Employees must treat colleagues and customers respectfully and must not retaliate against a person who\nraises a good-faith concern."
+      },
+      {
+        "id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:5",
+        "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Hybrid work scheduling is governed by HR-REMOTE-2026; this document covers the security conditions for\nremote access.\nDocument control: This synthetic policy is designed for employee-question retrieval, citations and version-testing. It does not\ndescribe actual company terms.\nFICTIONAL DEMO POLICY - NOT AN OFFICIAL INFOSYS DOCUMENT\n1"
+      },
+      {
+        "id": "286ccbd5-1bcd-4e62-a7d4-cb6ecb43cbd7:4",
+        "document": "OPS_03_Whistleblower_and_Grievance_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 The organization prohibits retaliation against employees raising concerns in good faith.\n\u2022 Reports are shared only with authorized reviewers to the extent reasonably required to investigate."
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "What are the company's workplace rules?",
+      "answer": "Here are selected rules supported by the available policies:\nCorporate devices must automatically lock after 5 minutes of inactivity. [1]\nEmployees must avoid discussing confidential work on open calls in public places. [2]\nEmployees must treat colleagues and customers respectfully and must not retaliate against a person who raises a good-faith concern. [3]\nFor a more specific answer, name the workplace topic or situation you want to check.",
+      "status": "answered",
+      "citations": [
+        {
+          "document_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1",
+          "passage_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:3",
+          "filename": "IT_03_Remote_Access_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Workstation Security",
+          "page": 1,
+          "quote": "\u2022 Corporate devices must automatically lock after 5 minutes of inactivity.",
+          "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+          "chunk_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:3"
+        },
+        {
+          "document_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1",
+          "passage_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:3",
+          "filename": "IT_03_Remote_Access_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "2. Workstation Security",
+          "page": 1,
+          "quote": "\u2022 Employees must avoid discussing confidential work on open calls in public places.",
+          "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+          "chunk_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:3"
+        },
+        {
+          "document_id": "aacac688-583c-4d84-a945-bd251b0e097c",
+          "passage_id": "aacac688-583c-4d84-a945-bd251b0e097c:2",
+          "filename": "OPS_01_Code_of_Conduct_2026_CURRENT.pdf",
+          "version": "2026",
+          "section": "1. Professional Conduct",
+          "page": 1,
+          "quote": "\u2022 Employees must treat colleagues and customers respectfully and must not retaliate against a person who\nraises a good-faith concern.",
+          "document": "OPS_01_Code_of_Conduct_2026_CURRENT.pdf",
+          "chunk_id": "aacac688-583c-4d84-a945-bd251b0e097c:2"
+        }
+      ],
+      "supported_parts": [
+        "workplace rules"
+      ],
+      "unsupported_parts": [],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 3.81
+  },
+  {
+    "company": "infosys",
+    "question": "Does the company provide unlimited international vacations?",
+    "retrieved": [
+      {
+        "id": "9f0f8960-2d60-4658-89ef-231f6f58f98d:2",
+        "document": "HR_03_Remote_Work_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Employees who have completed 90 days of service may request hybrid work, subject to team requirements\nand manager approval."
+      },
+      {
+        "id": "c05e98c0-5bc9-4848-ae42-53d6a73c019e:3",
+        "document": "HLT_01_Group_Medical_Coverage_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 The fictional plan provides a \u20b95,00,000 annual family-floater sum insured shared across enrolled family\nmembers.\n\u2022 The amount is a combined annual limit, not \u20b95,00,000 separately for each person."
+      },
+      {
+        "id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:2",
+        "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 When accessing internal company resources outside the office, employees must use the approved company\nVPN and multifactor authentication.\n\u2022 Access from public or shared computers is prohibited."
+      },
+      {
+        "id": "9f0f8960-2d60-4658-89ef-231f6f58f98d:5",
+        "document": "HR_03_Remote_Work_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Remote staff must follow IT-REMOTE-2026 for VPN, device, and screen-lock requirements.\n\u2022 Equipment reimbursement is described in FIN-PAY-2026, not in this policy.\nDocument control: This synthetic policy is designed for employee-question retrieval, citations and version-testing. It does not\ndescribe actual company terms.\nFICTIONAL DEMO POLICY - NOT AN OFFICIAL INFOSYS DOCUMENT\n1"
+      },
+      {
+        "id": "12fd332a-aa3a-4fe0-bf93-bc9f78180267:3",
+        "document": "FIN_02_Expense_Claims_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 The current domestic meal reimbursement cap is \u20b9850 per day.\n\u2022 The current domestic hotel reimbursement cap is \u20b93,600 per night.\n\u2022 Reimbursement is based on actual eligible costs up to the applicable cap."
+      },
+      {
+        "id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:5",
+        "document": "IT_03_Remote_Access_2026_CURRENT.pdf",
+        "version": "2026",
+        "text": "\u2022 Hybrid work scheduling is governed by HR-REMOTE-2026; this document covers the security conditions for\nremote access.\nDocument control: This synthetic policy is designed for employee-question retrieval, citations and version-testing. It does not\ndescribe actual company terms.\nFICTIONAL DEMO POLICY - NOT AN OFFICIAL INFOSYS DOCUMENT\n1"
+      }
+    ],
+    "diagnostics": [],
+    "response": {
+      "question": "Does the company provide unlimited international vacations?",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "Does the company provide unlimited international vacations?"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 1.33
+  },
+  {
+    "company": "tcs",
+    "question": "How many medical leaves are allowed in 2026?",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "How many medical leaves are allowed in 2026?",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "How many medical leaves are allowed in 2026?"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.02
+  },
+  {
+    "company": "tcs",
+    "question": "medical leaves",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "medical leaves",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "medical leaves"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.0
+  },
+  {
+    "company": "tcs",
+    "question": "What was the medical leave allowance in 2024?",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "What was the medical leave allowance in 2024?",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "What was the medical leave allowance in 2024?"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.0
+  },
+  {
+    "company": "tcs",
+    "question": "Compare the 2024 and 2026 medical leave policies.",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "Compare the 2024 and 2026 medical leave policies.",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "Compare the 2024 and 2026 medical leave policies."
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.01
+  },
+  {
+    "company": "tcs",
+    "question": "What are the company's workplace rules?",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "What are the company's workplace rules?",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "What are the company's workplace rules?"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.02
+  },
+  {
+    "company": "tcs",
+    "question": "Does the company provide unlimited international vacations?",
+    "retrieved": [],
+    "diagnostics": [],
+    "response": {
+      "question": "Does the company provide unlimited international vacations?",
+      "answer": "The available evidence does not support an answer to this question.",
+      "status": "not_covered",
+      "citations": [],
+      "supported_parts": [],
+      "unsupported_parts": [
+        "Does the company provide unlimited international vacations?"
+      ],
+      "warnings": []
+    },
+    "citation_integrity": true,
+    "seconds": 0.01
+  }
+]

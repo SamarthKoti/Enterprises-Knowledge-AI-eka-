@@ -1,0 +1,1 @@
+The requested glass_spheres.png and folder_hand.png were not present in the supplied workspace. Add them here for a visual fidelity pass. The current design follows the written specification; the hand is generated artwork and spheres are CSS material studies.

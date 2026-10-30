@@ -1,0 +1,28 @@
+INFO:     127.0.0.1:52885 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56098 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56099 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61773 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:57266 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:65439 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65440 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59127 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:52477 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52478 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55449 - "GET /api/reports/me?period=week HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55538 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61788 - "GET /api/reports/me?period=week HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64018 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:60500 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60499 - "GET /api/reports/me?period=week HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55706 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59251 - "GET /api/reports/me?period=week HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64338 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64339 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63923 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63924 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62960 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62961 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57554 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:53396 - "POST /api/ask HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:63712 - "POST /api/ask HTTP/1.1" 503 Service Unavailable

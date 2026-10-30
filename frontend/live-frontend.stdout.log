@@ -1,0 +1,13 @@
+
+> enterprise-knowledge-ai@0.1.0 dev
+> vite --host 127.0.0.1 --port 5173 --strictPort
+
+
+  VITE v6.4.5  ready in 377 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+  ➜  press h + enter to show help
+1:46:03 am [vite] (client) hmr update /src/pages/Pages.jsx, /src/styles/index.css
+1:46:03 am [vite] (client) hmr update /src/styles/index.css
+2:27:39 am [vite] (client) hmr update /src/styles/index.css
+2:35:35 am [vite] (client) hmr update /src/styles/index.css

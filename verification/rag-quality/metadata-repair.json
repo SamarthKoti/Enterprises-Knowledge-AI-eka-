@@ -1,0 +1,302 @@
+[
+  {
+    "document_id": "84878739-2441-4c49-97f8-feec2071538f",
+    "policy_id": "HR-LEAVE-2024",
+    "replacement": "HR-LEAVE-2026",
+    "source": "84878739-2441-4c49-97f8-feec2071538f:1",
+    "after": {
+      "policy_family": "HR-LEAVE",
+      "version": "2024",
+      "effective_date": "2024-01-01",
+      "status": "superseded",
+      "superseded_by": "1b75e55f-8b26-445a-878a-8e5453edd0ea"
+    },
+    "before": {
+      "policy_family": "HR 1",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "1b75e55f-8b26-445a-878a-8e5453edd0ea",
+    "policy_id": "HR-LEAVE-2026",
+    "replacement": null,
+    "source": "1b75e55f-8b26-445a-878a-8e5453edd0ea:1",
+    "after": {
+      "policy_family": "HR-LEAVE",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "HR 2",
+      "version": "2026",
+      "effective_date": "2026-02-01",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "9f0f8960-2d60-4658-89ef-231f6f58f98d",
+    "policy_id": "HR-REMOTE-2026",
+    "replacement": null,
+    "source": "9f0f8960-2d60-4658-89ef-231f6f58f98d:1",
+    "after": {
+      "policy_family": "HR-REMOTE",
+      "version": "2026",
+      "effective_date": "2026-02-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "HR 3",
+      "version": "2026",
+      "effective_date": "2026-03-01",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "3af09617-398d-4f1c-80d1-f94522c64c39",
+    "policy_id": "FIN-EXP-2024",
+    "replacement": "FIN-EXP-2026",
+    "source": "3af09617-398d-4f1c-80d1-f94522c64c39:1",
+    "after": {
+      "policy_family": "FIN-EXP",
+      "version": "2024",
+      "effective_date": "2024-04-01",
+      "status": "superseded",
+      "superseded_by": "12fd332a-aa3a-4fe0-bf93-bc9f78180267"
+    },
+    "before": {
+      "policy_family": "FINANCE 1",
+      "version": "2026",
+      "effective_date": "2026-01-02",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "12fd332a-aa3a-4fe0-bf93-bc9f78180267",
+    "policy_id": "FIN-EXP-2026",
+    "replacement": null,
+    "source": "12fd332a-aa3a-4fe0-bf93-bc9f78180267:1",
+    "after": {
+      "policy_family": "FIN-EXP",
+      "version": "2026",
+      "effective_date": "2026-04-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "FINANCE 2",
+      "version": "2026",
+      "effective_date": "2026-02-02",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "e9c0889d-c623-46dd-b95e-7deeaf80b7ea",
+    "policy_id": "FIN-PAY-2026",
+    "replacement": null,
+    "source": "e9c0889d-c623-46dd-b95e-7deeaf80b7ea:1",
+    "after": {
+      "policy_family": "FIN-PAY",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "FINANCE 3",
+      "version": "2026",
+      "effective_date": "2026-03-02",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "5d6dd14e-9aff-432b-bd9c-6fc449942e22",
+    "policy_id": "IT-SEC-2026",
+    "replacement": null,
+    "source": "5d6dd14e-9aff-432b-bd9c-6fc449942e22:1",
+    "after": {
+      "policy_family": "IT-SEC",
+      "version": "2026",
+      "effective_date": "2026-01-15",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "IT 1",
+      "version": "2025",
+      "effective_date": "2026-03-30",
+      "status": "superseded",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "52894a20-0620-4504-b387-55fd1ef1014a",
+    "policy_id": "IT-USE-2026",
+    "replacement": null,
+    "source": "52894a20-0620-4504-b387-55fd1ef1014a:1",
+    "after": {
+      "policy_family": "IT-USE",
+      "version": "2026",
+      "effective_date": "2026-02-15",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "IT 2",
+      "version": "2026",
+      "effective_date": "2026-03-09",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1",
+    "policy_id": "IT-REMOTE-2026",
+    "replacement": null,
+    "source": "4291a22e-2fa4-4126-aa58-aa68b1d01ed1:1",
+    "after": {
+      "policy_family": "IT-REMOTE",
+      "version": "2026",
+      "effective_date": "2026-03-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "IT 3",
+      "version": "2026",
+      "effective_date": "2026-05-01",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "aacac688-583c-4d84-a945-bd251b0e097c",
+    "policy_id": "OPS-CONDUCT-2026",
+    "replacement": null,
+    "source": "aacac688-583c-4d84-a945-bd251b0e097c:1",
+    "after": {
+      "policy_family": "OPS-CONDUCT",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "OPERATIONS 1",
+      "version": "2026",
+      "effective_date": "2026-03-01",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "f6113d03-17e9-41e8-b41e-ddd2e7f3261a",
+    "policy_id": "OPS-INCIDENT-2026",
+    "replacement": null,
+    "source": "f6113d03-17e9-41e8-b41e-ddd2e7f3261a:1",
+    "after": {
+      "policy_family": "OPS-INCIDENT",
+      "version": "2026",
+      "effective_date": "2026-02-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "OPERATIONS 2",
+      "version": "2025",
+      "effective_date": "2026-06-05",
+      "status": "superseded",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "286ccbd5-1bcd-4e62-a7d4-cb6ecb43cbd7",
+    "policy_id": "OPS-WHISTLE-2026",
+    "replacement": null,
+    "source": "286ccbd5-1bcd-4e62-a7d4-cb6ecb43cbd7:1",
+    "after": {
+      "policy_family": "OPS-WHISTLE",
+      "version": "2026",
+      "effective_date": "2026-03-15",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "OPERATIONS 3",
+      "version": "2026",
+      "effective_date": "2026-05-10",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "c05e98c0-5bc9-4848-ae42-53d6a73c019e",
+    "policy_id": "HLT-COVER-2026",
+    "replacement": null,
+    "source": "c05e98c0-5bc9-4848-ae42-53d6a73c019e:1",
+    "after": {
+      "policy_family": "HLT-COVER",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "HEALTH INSURANCE 1",
+      "version": "2026",
+      "effective_date": "2026-07-07",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "eaa29f30-c982-408b-bd5d-785a0af59899",
+    "policy_id": "HLT-CLAIMS-2026",
+    "replacement": null,
+    "source": "eaa29f30-c982-408b-bd5d-785a0af59899:1",
+    "after": {
+      "policy_family": "HLT-CLAIMS",
+      "version": "2026",
+      "effective_date": "2026-01-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "HEALTH INSURANCE 1",
+      "version": "2026",
+      "effective_date": "2026-08-09",
+      "status": "current",
+      "superseded_by": null
+    }
+  },
+  {
+    "document_id": "85863b69-3565-4c71-9760-b4e6f9ae59ee",
+    "policy_id": "HLT-WELL-2026",
+    "replacement": null,
+    "source": "85863b69-3565-4c71-9760-b4e6f9ae59ee:1",
+    "after": {
+      "policy_family": "HLT-WELL",
+      "version": "2026",
+      "effective_date": "2026-02-01",
+      "status": "current",
+      "superseded_by": null
+    },
+    "before": {
+      "policy_family": "HEALTH INSURANCE 1",
+      "version": "2026",
+      "effective_date": "2026-05-06",
+      "status": "current",
+      "superseded_by": null
+    }
+  }
+]

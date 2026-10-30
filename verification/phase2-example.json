@@ -1,0 +1,26 @@
+{
+  "note": "Real MiniLM and Chroma; Gemini generation and verification mocked for this fictional test.",
+  "response": {
+    "question": "What is the current medical leave allowance?",
+    "answer": "Employees receive 12 days of medical leave per year. [1]",
+    "status": "answered",
+    "citations": [
+      {
+        "document_id": "cbc152d1-d542-4cb5-a499-c4ccbb3ceb80",
+        "passage_id": "cbc152d1-d542-4cb5-a499-c4ccbb3ceb80:0",
+        "filename": "leave.md",
+        "version": "2026",
+        "section": null,
+        "page": null,
+        "quote": "Employees receive 12 days of medical leave per year.",
+        "document": "leave.md",
+        "chunk_id": "cbc152d1-d542-4cb5-a499-c4ccbb3ceb80:0"
+      }
+    ],
+    "supported_parts": [
+      "Medical leave allowance"
+    ],
+    "unsupported_parts": [],
+    "warnings": []
+  }
+}
