@@ -25,6 +25,11 @@ def upsert(chunks, vectors):
 def remove(document_id):
     collection().delete(where={'document_id':document_id})
 
+def remove_document(document_id, company_id, key):
+    # Use the document's stored embedding collection, even after a model change.
+    store=_collection(str(Path(settings.data_dir).resolve()/'chroma'),key or embedding_key())
+    store.delete(where={'$and':[{'document_id':document_id},{'company_id':company_id}]})
+
 def search(vector, document_ids, count, company_id=None):
     if not document_ids or not collection().count():
         return []

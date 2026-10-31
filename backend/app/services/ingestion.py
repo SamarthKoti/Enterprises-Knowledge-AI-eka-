@@ -25,6 +25,31 @@ def get_document(document_id, company_id=None):
         raise HTTPException(404,'Document not found')
     return document_model(row)
 
+
+def delete_document(document_id, company_id):
+    with INGEST_LOCK:
+        with connection() as db:
+            row=db.execute('SELECT * FROM documents WHERE id=? AND company_id=?',(document_id,company_id)).fetchone()
+            if not row:
+                raise HTTPException(404,'Document not found')
+            folder=(Path(settings.data_dir)/'uploads').resolve()
+            path=(folder/(row['id']+'.'+row['format'])).resolve()
+            if path.parent!=folder:
+                raise HTTPException(409,'Invalid stored document path')
+            # Commit before external cleanup: a partial failure must never leave
+            # this document eligible for retrieval. Repeating DELETE is safe.
+            db.execute("UPDATE documents SET processing_status='deleting' WHERE id=? AND company_id=?",(document_id,company_id))
+        try:
+            vector_store.remove_document(document_id,company_id,row['embedding_key'])
+            path.unlink(missing_ok=True)
+            with connection() as db:
+                db.execute('DELETE FROM passages WHERE document_id=?',(document_id,))
+                # Removing a replacement must not reactivate an older policy.
+                db.execute("UPDATE documents SET superseded_by=NULL,status=CASE WHEN status='current' THEN 'superseded' ELSE status END WHERE superseded_by=? AND company_id=?",(document_id,company_id))
+                db.execute('DELETE FROM documents WHERE id=? AND company_id=?',(document_id,company_id))
+        except Exception as exc:
+            raise HTTPException(503,'Document deletion could not finish. It is excluded from answers; retry Delete to finish cleanup.') from exc
+
 def ingest(filename, data, metadata, company_id=None):
     filename=re.sub(r'[^\w. ()-]','_',filename.replace('\\','/').split('/')[-1])[:180]
     extension=Path(filename).suffix.lower().lstrip('.')

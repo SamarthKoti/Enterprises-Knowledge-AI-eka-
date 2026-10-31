@@ -49,6 +49,11 @@ def documents(user=Depends(admin_user)):
 def document(document_id: str,user=Depends(admin_user)):
     return ingestion.get_document(document_id,user['company_id'])
 
+@router.delete('/documents/{document_id}',status_code=204)
+def delete_document(document_id: str,user=Depends(admin_user)):
+    ingestion.delete_document(document_id,user['company_id'])
+    return Response(status_code=204)
+
 @router.post('/ask',response_model=Answer)
 @router.post('/answers',response_model=Answer,include_in_schema=False)
 def ask(question: Question,user=Depends(employee_user)):
