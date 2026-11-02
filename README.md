@@ -20,7 +20,7 @@ Open http://127.0.0.1:5173. Keep both terminals open. Use one backend worker. Fo
 If ports 8000 or 5173 are already reserved, run the backend on 8001 and start the frontend with `VITE_API_TARGET=http://127.0.0.1:8001 npm run dev -- --port 5174` (PowerShell syntax is shown below in the final run instructions).
 
 ## Company setup
-Copy .env.example to the root .env for a fresh installation. Configure INFOSYS_ADMIN_EMAIL, INFOSYS_ADMIN_PASSWORD_HASH, TCS_ADMIN_EMAIL, TCS_ADMIN_PASSWORD_HASH, and COMPANY_CODE_SECRET. Generate each administrator password hash from backend:
+Copy .env.example to the root .env for a fresh installation. Configure INFOSYS_ADMIN_EMAIL, INFOSYS_ADMIN_PASSWORD_HASH, TCS_ADMIN_EMAIL, TCS_ADMIN_PASSWORD_HASH, DELOITTE_ADMIN_EMAIL, DELOITTE_ADMIN_PASSWORD_HASH, and COMPANY_CODE_SECRET. Generate each administrator password hash from backend:
 ```powershell
 .\.venv\Scripts\python.exe -m app.core.password
 ```
@@ -30,7 +30,7 @@ The interactive helper accepts an 8–12-character administrator password and pr
 ```
 Save it as COMPANY_CODE_SECRET. Keep it unchanged and back it up with the database; changing it invalidates company-code verification. Restart the backend after configuration changes. The first administrator for each company can register through the app; a company is locked to one administrator after that.
 
-1. Use Register > Admin to create the first administrator for Infosys or TCS. Later, use the common Login screen; the backend determines the account's role and company from the stored account.
+1. Use Register > Admin to create the first administrator for Infosys, TCS, or Deloitte. Later, use the common Login screen; the backend determines the account's role and company from the stored account.
 2. Generate the company verification code once. Copy/save the displayed four-digit code immediately; only its keyed hash is stored, so it cannot be displayed again. Refresh/restart does not regenerate it.
 3. Upload company policies with explicit policy family, version, date and authority status. The UI accepts up to 60 files, uploading sequentially; each file is limited to 10 MiB.
 4. Employees choose Sign Up: name/email/five-digit ID/company, then company code, then password confirmation. Employee passwords are exactly eight characters under the Phase 3 specification. Leading zeros in employee IDs and codes are preserved.

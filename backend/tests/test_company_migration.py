@@ -12,7 +12,7 @@ def test_company_migration_preserves_unscoped_records(tmp_path, monkeypatch):
     initialize()
     initialize()
     with connection() as db:
-        assert [r['name'] for r in db.execute('SELECT name FROM companies ORDER BY name')] == ['Infosys', 'TCS']
+        assert [r['name'] for r in db.execute('SELECT name FROM companies ORDER BY name')] == ['Deloitte', 'Infosys', 'TCS']
         assert db.execute("SELECT company_id FROM documents WHERE id='old'").fetchone()[0] is None
         user = db.execute("SELECT * FROM users WHERE email='old@example.com'").fetchone()
         assert user['password_hash'] == 'existing-hash'

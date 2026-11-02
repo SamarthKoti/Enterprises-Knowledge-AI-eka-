@@ -67,7 +67,9 @@ def test_admins_codes_and_persistence(clients):
     initialize();provision_admins()
     a.post('/api/auth/logout');admin(a)
     assert a.get('/api/company').json()['code_generated']
-    assert 'code' not in a.get('/api/company').json()
+    assert a.get('/api/company').json()['code']==first
+    assert b.get('/api/company').json()['code']==second
+    assert 'no-store' in a.get('/api/company').headers['cache-control']
     assert a.post('/api/company/code').status_code==409
     register(a,'Infosys',first)
     assert a.get('/api/auth/me').json()['company_id']=='infosys'
@@ -213,3 +215,20 @@ def test_analytics_windows_and_personal_scope(clients):
         assert stats['question_count']==expected and stats['total_access_events']==expected
         assert stats['unique_employees']==2 and stats['categories']['Finance']==expected
         assert sum(item['accesses'] for item in stats['trend'])==expected
+
+
+def test_admin_code_display_before_generation_and_leading_zeroes(clients,monkeypatch):
+    import app.api.company as company_api
+    a,b=clients
+    admin(a)
+    assert a.get('/api/company').json()['code'] is None
+    monkeypatch.setattr(company_api.secrets,'randbelow',lambda limit:7)
+    response=a.post('/api/company/code')
+    assert response.status_code==201 and response.json()['code']=='0007'
+    initialize()
+    assert a.get('/api/company').json()['code']=='0007'
+    admin(b,'tcs')
+    assert b.get('/api/company').json()['code'] is None
+    register(a,'Infosys','0007')
+    assert a.get('/api/company').status_code==403
+    assert 'code' not in a.get('/api/auth/me').json()

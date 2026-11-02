@@ -1,4 +1,5 @@
 import secrets
+import hmac
 import time
 from datetime import datetime, timedelta, timezone
 from typing import Literal
@@ -9,11 +10,23 @@ from app.services.activity import CATEGORIES
 
 router=APIRouter(tags=['Company'])
 
+def display_code(record):
+    if not record:
+        return None
+    # Existing installations store keyed digests of four-digit invite codes.
+    # Resolve that bounded domain only for the authenticated company admin;
+    # retain the original code and hashed storage without rotating invitations.
+    for number in range(10000):
+        code=f'{number:04d}'
+        if hmac.compare_digest(code_record(code),record):
+            return code
+    raise HTTPException(503,'The existing company code cannot be displayed with the configured code secret.')
+
 @router.get('/company')
 def company(user=Depends(admin_user)):
     with connection() as db:
-        row=db.execute('SELECT name,verification_code_generated_at FROM companies WHERE id=?',(user['company_id'],)).fetchone()
-    return {'company_id':user['company_id'],'name':row['name'],'code_generated':row['verification_code_generated_at'] is not None,'generated_at':row['verification_code_generated_at']}
+        row=db.execute('SELECT name,verification_code_record,verification_code_generated_at FROM companies WHERE id=?',(user['company_id'],)).fetchone()
+    return {'company_id':user['company_id'],'name':row['name'],'code_generated':row['verification_code_generated_at'] is not None,'generated_at':row['verification_code_generated_at'],'code':display_code(row['verification_code_record'])}
 
 @router.post('/company/code',status_code=201)
 def generate_code(user=Depends(admin_user)):
@@ -26,7 +39,7 @@ def generate_code(user=Depends(admin_user)):
             if not db.execute('SELECT 1 FROM companies WHERE verification_code_record=?',(record,)).fetchone(): break
         else: raise HTTPException(503,'Unable to allocate a unique company code')
         db.execute('UPDATE companies SET verification_code_record=?,verification_code_generated_at=? WHERE id=? AND verification_code_record IS NULL',(record,int(time.time()),user['company_id']))
-    return {'code':code,'message':'Save this code now. It is displayed only once.'}
+    return {'code':code,'message':'Your company code is available on the admin dashboard. Share it only with your employees.'}
 
 @router.get('/employees')
 def employees(user=Depends(admin_user)):

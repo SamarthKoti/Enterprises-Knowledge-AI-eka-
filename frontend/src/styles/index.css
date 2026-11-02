@@ -79,3 +79,12 @@ html:has(.assistant-page){scroll-behavior:auto}
  .assistant-page .question-suggestions button{justify-content:space-between}
  .assistant-page{padding-bottom:32px}
 }
+
+.composer-bottom{padding-inline:12px}
+.assistant-source-row{position:relative;display:grid;align-items:center;min-height:44px}
+.assistant-source-row .query-options{margin:0}
+.assistant-source-row summary{display:list-item;align-content:center;min-height:44px;max-width:calc(50% - 28px)}
+.assistant-source-row .composer-mic{position:absolute;top:0;inset-inline:0;margin-inline:auto;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#ffffff30,#bc8ce414);border:1px solid #ebd5ff66;box-shadow:inset 0 1px 2px #ffffff40,0 3px 10px #230b4126;backdrop-filter:blur(10px)}
+.assistant-source-row .composer-mic[aria-pressed=true]{background:#a86be266;box-shadow:0 0 10px #daafff50}
+
+.assistant-source-row .composer-mic:hover:not(:disabled){transform:none}

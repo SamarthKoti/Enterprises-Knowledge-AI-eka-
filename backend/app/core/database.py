@@ -41,15 +41,28 @@ def initialize():
 
 def initialize_company_schema(db):
     """Add company metadata without assigning legacy records to a tenant."""
-    db.executescript('''
-    CREATE TABLE IF NOT EXISTS companies (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL UNIQUE CHECK(name IN ('Infosys','TCS')),
-        verification_code_record TEXT UNIQUE,
-        verification_code_generated_at INTEGER
-    );
-    INSERT OR IGNORE INTO companies(id,name) VALUES ('infosys','Infosys'),('tcs','TCS');
-    ''')
+    db.commit()
+    db.execute('PRAGMA foreign_keys=OFF')
+    try:
+        db.execute('BEGIN IMMEDIATE')
+        existing = db.execute("SELECT sql FROM sqlite_master WHERE name='companies' AND type='table'").fetchone()
+        if not existing or 'Deloitte' not in existing['sql']:
+            db.execute("""CREATE TABLE companies_new (
+                id TEXT PRIMARY KEY,
+                name TEXT NOT NULL UNIQUE CHECK(name IN ('Infosys','TCS','Deloitte')),
+                verification_code_record TEXT UNIQUE,
+                verification_code_generated_at INTEGER
+            )""")
+            if existing:
+                db.execute('INSERT INTO companies_new SELECT id,name,verification_code_record,verification_code_generated_at FROM companies')
+                db.execute('DROP TABLE companies')
+            db.execute('ALTER TABLE companies_new RENAME TO companies')
+        db.executemany('INSERT OR IGNORE INTO companies(id,name) VALUES (?,?)',
+                       [(name.lower(), name) for name in ('Infosys','TCS','Deloitte')])
+        db.commit()
+    finally:
+        db.rollback()
+        db.execute('PRAGMA foreign_keys=ON')
     additions = {
         'users': {
             'id': 'TEXT', 'name': 'TEXT', 'employee_id': 'TEXT',

@@ -3,6 +3,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     demo_email: str = 'demo@example.com'
+    deloitte_admin_email: str = 'admin@deloitte.local'
+    deloitte_admin_password_hash: str = ''
     infosys_admin_email: str = 'admin@infosys.local'
     infosys_admin_password_hash: str = ''
     tcs_admin_email: str = 'admin@tcs.local'

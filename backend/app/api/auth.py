@@ -54,14 +54,14 @@ class Credentials(StrictModel):
         return value
 
 class EmployeeLogin(Credentials):
-    company: Literal['Infosys','TCS']
+    company: Literal['Infosys','TCS','Deloitte']
     code: str=Field(pattern=r'^[0-9]{4}$')
 
 class VerifySignup(StrictModel):
     name: str=Field(min_length=1,max_length=120)
     email: str=Field(min_length=3,max_length=254)
     employee_id: str=Field(pattern=r'^[0-9]{5}$')
-    company: Literal['Infosys','TCS']
+    company: Literal['Infosys','TCS','Deloitte']
     code: str=Field(pattern=r'^[0-9]{4}$')
 
     @field_validator('name')
@@ -83,7 +83,7 @@ class AdminSignup(StrictModel):
     name: str=Field(min_length=1,max_length=120)
     email: str=Field(min_length=3,max_length=254)
     employee_id: str=Field(pattern=r'^[0-9]{5}$')
-    company: Literal['Infosys','TCS']
+    company: Literal['Infosys','TCS','Deloitte']
     password: str=Field(min_length=8,max_length=8)
     confirm_password: str=Field(min_length=8,max_length=8)
 
@@ -133,7 +133,7 @@ def start_session(row,request,response,client):
 
 def provision_admins():
     with connection() as db:
-        for company in ('infosys','tcs'):
+        for company in ('infosys','tcs','deloitte'):
             email=getattr(settings,f'{company}_admin_email').strip().casefold()
             encoded=getattr(settings,f'{company}_admin_password_hash')
             if not encoded: continue

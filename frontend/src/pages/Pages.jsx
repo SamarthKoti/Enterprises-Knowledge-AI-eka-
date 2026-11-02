@@ -1,3 +1,4 @@
+import {Mic} from 'lucide-react';
 import {selectedEvidenceMessage} from '../services/evidence';
 import {useEffect,useId,useRef,useState} from 'react';
 import {Link,useOutletContext} from 'react-router-dom';
@@ -50,10 +51,93 @@ export function Documents(){
 
 export function Assistant(){
  const {messages,setMessages,asking,setAsking}=useOutletContext();const [question,setQuestion]=useState(''),[error,setError]=useState(''),[family,setFamily]=useState(''),[asOf,setAsOf]=useState(''),[selectedId,setSelectedId]=useState(null),[evidenceOpen,setEvidenceOpen]=useState(false);const end=useRef(null);
+ const mic=useRef(null), active=useRef(false), currentSpeech=useRef(null);
+ const [listening,setListening]=useState(false),[note,setNote]=useState('');
+ const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ function abortMic(){
+   const session=mic.current;
+   mic.current=null;
+   session?.abort();
+   setListening(false);
+ }
+ useEffect(()=>{
+   active.current=true;
+   return ()=>{
+     active.current=false;
+     currentSpeech.current=null;
+     const session=mic.current;
+     mic.current=null;
+     session?.abort();
+     window.speechSynthesis?.cancel();
+   };
+ },[]);
+ function dictate(){
+   if(mic.current){mic.current.stop();return;}
+   currentSpeech.current=null;
+   window.speechSynthesis?.cancel();
+   const session=new Recognition();
+   mic.current=session;
+   session.lang='en';
+   session.interimResults=true;
+   const prefix=question.trimEnd();
+   session.onresult=event=>{
+     if(mic.current!==session)return;
+     const words=Array.from(event.results,r=>r[0].transcript).join(' ').trim();
+     setQuestion([prefix,words].filter(Boolean).join(' ').slice(0,2000));
+   };
+   session.onend=()=>{
+     if(mic.current===session){mic.current=null;setListening(false);}
+   };
+   session.onerror=event=>{
+     if(mic.current===session)setNote(event.error==='not-allowed'?'Allow microphone access to dictate.':'Dictation stopped. Try again or type your question.');
+   };
+   setNote('');
+   try{session.start();setListening(true);document.getElementById('question')?.focus({preventScroll:true});}
+   catch{abortMic();setNote('Microphone unavailable. You can type your question.');}
+ }
+ function prepareSpeech(){
+   const synth=window.speechSynthesis;
+   if(!synth||!window.SpeechSynthesisUtterance){
+     setNote('Spoken answers are unavailable in this browser.');
+     return;
+   }
+   synth.getVoices();
+   synth.cancel();
+   synth.resume();
+   // Start the speech engine during the submit gesture, before retrieval awaits the network.
+   const primer=new SpeechSynthesisUtterance(' ');
+   primer.volume=0;
+   currentSpeech.current=primer;
+   synth.speak(primer);
+ }
+ function speak(answer){
+   const synth=window.speechSynthesis;
+   if(!active.current||!synth||!window.SpeechSynthesisUtterance)return;
+   try{
+     const voice=synth.getVoices().find(v=>v.localService&&/^en([-_]|$)/i.test(v.lang));
+     // Short utterances also work with speech engines that limit utterance length.
+     const parts=answer.match(/.{1,180}(?:\s+|$)|.{1,180}/gs)||[];
+     function next(index){
+       if(!active.current||index>=parts.length)return;
+       const speech=new SpeechSynthesisUtterance(parts[index].trim());
+       if(voice)speech.voice=voice;
+       speech.lang=voice?.lang||'en';
+       currentSpeech.current=speech;
+       speech.onend=()=>{if(currentSpeech.current===speech)next(index+1);};
+       speech.onerror=e=>{
+         if(active.current&&currentSpeech.current===speech&&!['canceled','interrupted'].includes(e.error))
+           setNote('Spoken answer unavailable ('+e.error+'). Check your browser sound settings and installed voices.');
+       };
+       synth.speak(speech);
+     }
+     synth.resume();
+     next(0);
+   }catch{setNote('Voice playback failed. Check your browser sound settings.');}
+ }
  const selected=selectedEvidenceMessage(messages,selectedId);
  // Keep the reader's scroll position stable when answers or errors arrive.
- async function send(event){event.preventDefault();if(!question.trim()||asking)return;const text=question.trim();setAsking(true);setError('');const id=crypto.randomUUID();setSelectedId(id);setMessages(previous=>[...previous,{id,question:text}]);setQuestion('');try{const result=await api('/ask',{method:'POST',body:JSON.stringify({question:text,...(family.trim()?{policy_family:family.trim()}:{}),...(asOf?{as_of:asOf}:{})})});setMessages(previous=>previous.map(message=>message.id===id?{...message,result}:message));}catch(e){setError(e.message);setMessages(previous=>previous.map(message=>message.id===id?{...message,error:e.message}:message));setQuestion(text);}finally{setAsking(false);}}
- return <div className="inner-page assistant-page"><Head number="03" title="Curiosity meets" accent="clarity." description="Ask your sources. Discover the evidence behind the answer."><button className="button ghost" onClick={()=>setEvidenceOpen(!evidenceOpen)} aria-expanded={evidenceOpen}>Source evidence <Quote size={16}/></button></Head><div className="assistant-grid"><GlassFolder label="YOUR INTELLIGENCE SPACE" className="conversation-folder"><div className="conversation" aria-live="polite">{!messages.length?<div className="chat-welcome"><div className="chat-orbit"><Sculpture/></div><span className="eyebrow">A BETTER QUESTION. A CLEARER ANSWER.</span><h2>What would you<br/>like to <em>understand?</em></h2><p>Ask about your company documents.<br/>Every answer begins with evidence.</p><div className="question-suggestions">{['What do our current policies say?','What changed in an earlier policy?'].map(text=><button key={text} onClick={()=>setQuestion(text)}>{text}<ArrowUpRight size={13}/></button>)}</div></div>:messages.map(message=><div className="conversation-turn" key={message.id}><div className="question-bubble"><span className="eyebrow">YOU</span><p>{message.question}</p></div>{message.result?<div className="answer-bubble"><div className="answer-heading"><span><Sparkles size={15}/> KNOWLEDGE AI</span><Badge value={message.result.status}/></div><p className="answer-text">{message.result.answer}</p>{message.result.unsupported_parts?.length>0&&<div className="coverage-note"><strong>Not fully covered</strong><ul>{message.result.unsupported_parts.map((part,i)=><li key={i}>{part}</li>)}</ul></div>}{message.result.warnings?.map((warning,i)=><p className="form-note" key={i}>{warning}</p>)}{message.result.citations.length>0&&<button className="citation-link" onClick={()=>{setSelectedId(message.id);setEvidenceOpen(true);}}><Quote size={14}/>{message.result.citations.length} source reference{message.result.citations.length===1?'':'s'}<ArrowUpRight size={14}/></button>}</div>:message.error?<DataError error={message.error}/>:<div className="thinking" role="status"><span className="loading-dots"><i/><i/><i/></span> Finding evidence and checking support…</div>}</div>)}<div ref={end}/></div><form className="composer" onSubmit={send}><label htmlFor="question" className="sr-only">Ask a question</label><textarea id="question" value={question} onChange={e=>setQuestion(e.target.value)} maxLength={2000} placeholder="Ask something meaningful…" rows={2} disabled={asking} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form.requestSubmit();}}}/><div className="composer-bottom"><span>GROUNDED IN YOUR DOCUMENTS</span><button className="send-button" disabled={asking||!question.trim()} aria-label="Send question"><ArrowUp size={19}/></button></div></form><details className="query-options"><summary>Refine your sources</summary><div className="metadata-grid"><label>Policy family<input value={family} onChange={e=>setFamily(e.target.value)} maxLength={150} placeholder="All policy families"/></label><label>Historical date<input type="date" value={asOf} onChange={e=>setAsOf(e.target.value)}/></label></div></details>{error&&<p className="form-note">Your question is preserved above. Correct the service issue and try again.</p>}<p className="assistant-disclaimer">Each question is answered independently. Always review its source evidence.</p></GlassFolder><aside className={`evidence-panel ${evidenceOpen?'is-open':''}`} aria-label="Source evidence"><GlassFolder label="THE EVIDENCE BEHIND IT"><div className="panel-title"><h2>Trace it to the source.</h2><button className="icon-button evidence-close" onClick={()=>setEvidenceOpen(false)} aria-label="Close source evidence"><X size={18}/></button></div>{selected?.result?.citations.length?<><p className="evidence-question">{selected.question}</p>{selected.result.citations.map((citation,i)=><article className="citation-card" key={`${citation.chunk_id||citation.passage_id}-${i}`}><div className="citation-number">{String(i+1).padStart(2,'0')} <FileText size={15}/></div><h3>{citation.document||citation.filename}</h3><p>{citation.version?`Version ${citation.version}`:'Unversioned'}{citation.page!=null?` · Page ${citation.page}`:''}</p>{citation.section&&<span className="citation-section">{citation.section}</span>}<blockquote>{citation.quote}</blockquote><details><summary>Source identifiers</summary><code>{citation.chunk_id||citation.passage_id}</code><code>{citation.document_id}</code></details></article>)}</>:<Empty icon={Quote} title="Nothing taken on faith.">Exact quotations, page references, and document versions appear here when an answer cites your sources.</Empty>}</GlassFolder></aside>{evidenceOpen&&<button className="evidence-backdrop" aria-label="Close evidence panel" onClick={()=>setEvidenceOpen(false)}/>}</div></div>;
+ async function send(event){event.preventDefault();if(!question.trim()||asking)return;abortMic();setNote('');try{prepareSpeech();}catch{setNote('Voice playback is unavailable.');}const text=question.trim();setAsking(true);setError('');const id=crypto.randomUUID();setSelectedId(id);setMessages(previous=>[...previous,{id,question:text}]);setQuestion('');try{const result=await api('/ask',{method:'POST',body:JSON.stringify({question:text,...(family.trim()?{policy_family:family.trim()}:{}),...(asOf?{as_of:asOf}:{})})});setMessages(previous=>previous.map(message=>message.id===id?{...message,result}:message));speak(result.answer);}catch(e){setError(e.message);setMessages(previous=>previous.map(message=>message.id===id?{...message,error:e.message}:message));setQuestion(text);}finally{setAsking(false);}}
+ return <div className="inner-page assistant-page"><Head number="03" title="Curiosity meets" accent="clarity." description="Ask your sources. Discover the evidence behind the answer."><button className="button ghost" onClick={()=>setEvidenceOpen(!evidenceOpen)} aria-expanded={evidenceOpen}>Source evidence <Quote size={16}/></button></Head><div className="assistant-grid"><GlassFolder label="YOUR INTELLIGENCE SPACE" className="conversation-folder"><div className="conversation" aria-live="polite">{!messages.length?<div className="chat-welcome"><div className="chat-orbit"><Sculpture/></div><span className="eyebrow">A BETTER QUESTION. A CLEARER ANSWER.</span><h2>What would you<br/>like to <em>understand?</em></h2><p>Ask about your company documents.<br/>Every answer begins with evidence.</p><div className="question-suggestions">{['What do our current policies say?','What changed in an earlier policy?'].map(text=><button key={text} onClick={()=>setQuestion(text)}>{text}<ArrowUpRight size={13}/></button>)}</div></div>:messages.map(message=><div className="conversation-turn" key={message.id}><div className="question-bubble"><span className="eyebrow">YOU</span><p>{message.question}</p></div>{message.result?<div className="answer-bubble"><div className="answer-heading"><span><Sparkles size={15}/> KNOWLEDGE AI</span><Badge value={message.result.status}/></div><p className="answer-text">{message.result.answer}</p>{message.result.unsupported_parts?.length>0&&<div className="coverage-note"><strong>Not fully covered</strong><ul>{message.result.unsupported_parts.map((part,i)=><li key={i}>{part}</li>)}</ul></div>}{message.result.warnings?.map((warning,i)=><p className="form-note" key={i}>{warning}</p>)}{message.result.citations.length>0&&<button className="citation-link" onClick={()=>{setSelectedId(message.id);setEvidenceOpen(true);}}><Quote size={14}/>{message.result.citations.length} source reference{message.result.citations.length===1?'':'s'}<ArrowUpRight size={14}/></button>}</div>:message.error?<DataError error={message.error}/>:<div className="thinking" role="status"><span className="loading-dots"><i/><i/><i/></span> Finding evidence and checking support…</div>}</div>)}<div ref={end}/></div><form className="composer" onSubmit={send}><label htmlFor="question" className="sr-only">Ask a question</label><textarea id="question" value={question} onChange={e=>{if(listening)abortMic();setQuestion(e.target.value);}} maxLength={2000} placeholder="Ask something meaningful…" rows={2} disabled={asking} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();e.currentTarget.form.requestSubmit();}}}/><div className="composer-bottom"><span role="status">{note||(listening?'Listening... Press Enter to send.':Recognition?'Press Enter to send':'Dictation unavailable in this browser')}</span><button className="send-button" disabled={asking||!question.trim()} aria-label="Send question"><ArrowUp size={19}/></button></div></form><div className="assistant-source-row"><button type="button" className="icon-button composer-mic" disabled={!Recognition||asking} aria-label={listening?'Stop dictation':'Dictate question'} aria-pressed={listening} title="Dictate question" onClick={dictate}><Mic size={18}/></button><details className="query-options"><summary>Refine your sources</summary><div className="metadata-grid"><label>Policy family<input value={family} onChange={e=>setFamily(e.target.value)} maxLength={150} placeholder="All policy families"/></label><label>Historical date<input type="date" value={asOf} onChange={e=>setAsOf(e.target.value)}/></label></div></details></div>{error&&<p className="form-note">Your question is preserved above. Correct the service issue and try again.</p>}<p className="assistant-disclaimer">Each question is answered independently. Always review its source evidence.</p></GlassFolder><aside className={`evidence-panel ${evidenceOpen?'is-open':''}`} aria-label="Source evidence"><GlassFolder label="THE EVIDENCE BEHIND IT"><div className="panel-title"><h2>Trace it to the source.</h2><button className="icon-button evidence-close" onClick={()=>setEvidenceOpen(false)} aria-label="Close source evidence"><X size={18}/></button></div>{selected?.result?.citations.length?<><p className="evidence-question">{selected.question}</p>{selected.result.citations.map((citation,i)=><article className="citation-card" key={`${citation.chunk_id||citation.passage_id}-${i}`}><div className="citation-number">{String(i+1).padStart(2,'0')} <FileText size={15}/></div><h3>{citation.document||citation.filename}</h3><p>{citation.version?`Version ${citation.version}`:'Unversioned'}{citation.page!=null?` · Page ${citation.page}`:''}</p>{citation.section&&<span className="citation-section">{citation.section}</span>}<blockquote>{citation.quote}</blockquote><details><summary>Source identifiers</summary><code>{citation.chunk_id||citation.passage_id}</code><code>{citation.document_id}</code></details></article>)}</>:<Empty icon={Quote} title="Nothing taken on faith.">Exact quotations, page references, and document versions appear here when an answer cites your sources.</Empty>}</GlassFolder></aside>{evidenceOpen&&<button className="evidence-backdrop" aria-label="Close evidence panel" onClick={()=>setEvidenceOpen(false)}/>}</div></div>;
 }
 
 export function Batch(){return <div className="inner-page"><Head number="04" title="Bigger questions." accent="One workflow." description="A dedicated space for repeatable, structured knowledge discovery."/><div className="batch-feature"><div><span className="eyebrow">ON THE HORIZON</span><h2>Bring a list.<br/><em>Find a perspective.</em></h2><p>Batch processing is not available yet. You can ask individual questions in the AI Assistant today.</p><Link className="button ghost" to="/assistant">Ask a question <ArrowUpRight size={16}/></Link></div><Sculpture variant="blue"/></div><div className="feature-grid batch-grid">{[{icon:UploadCloud,title:'Bring your questions',text:'Question-file upload awaits backend support.',action:'Choose question file'},{icon:ListChecks,title:'Follow the evidence',text:'Per-question answers, classifications, and source references.',action:'Process questions'},{icon:Download,title:'Take your insights further',text:'Structured results will be available to export.',action:'Export results'}].map(({icon:Icon,...item},i)=><article className="batch-card" key={item.title}><span className="eyebrow">0{i+1} / PLANNED</span><Icon size={34} strokeWidth={1}/><h3>{item.title}</h3><p>{item.text}</p><button className="button ghost" disabled>{item.action}</button></article>)}</div><GlassFolder label="BATCH RESULTS"><div className="table-scroll"><table><thead><tr>{['Question','Answer','Classification','Sources'].map(text=><th key={text}>{text}</th>)}</tr></thead></table></div><Empty icon={ListChecks} title="No batch results yet.">Batch endpoints are unimplemented. No processing or export has occurred.</Empty></GlassFolder></div>}

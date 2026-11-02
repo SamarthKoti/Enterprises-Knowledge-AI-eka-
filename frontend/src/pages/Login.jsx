@@ -20,7 +20,7 @@ export default function Login({onLogin}) {
   }catch(err){setError(err.message);}finally{setBusy(false);}
  }
  const field=(name,label,props={})=><div className="floating-field"><input id={name} name={name} value={values[name]} onChange={change} placeholder=" " required {...props}/><label htmlFor={name}>{label}</label></div>;
- const company=<label className="company-field">Company<select name="company" value={values.company} onChange={change}><option>Infosys</option><option>TCS</option></select></label>;
+ const company=<label className="company-field">Company<select name="company" value={values.company} onChange={change}><option>Infosys</option><option>TCS</option><option>Deloitte</option></select></label>;
  const registrationScreen=screen==='register'||screen==='admin';
  const password=<div className="floating-field password-field"><input id="password" name="password" value={values.password} onChange={change} type={show?'text':'password'} autoComplete={registrationScreen?'new-password':'current-password'} minLength={registrationScreen?8:1} maxLength={registrationScreen?8:1024} placeholder=" " required/><label htmlFor="password">{registrationScreen?'Password · exactly 8 characters':'Password'}</label><button type="button" className="password-toggle" onClick={()=>setShow(!show)} aria-label={show?'Hide password':'Show password'}>{show?<EyeOff size={16}/>:<Eye size={16}/>}</button></div>;
  const title=screen==='login'?'Welcome back.':screen==='choose'?'Register your workspace.':screen==='admin'?'Administrator registration.':'Employee registration.';
